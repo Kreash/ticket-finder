@@ -1,0 +1,23 @@
+﻿.ticket {
+  height: 168px;
+  width: 100%;
+
+  padding: 24px;
+  display: flex;
+}
+
+.image-wrapper {
+  height: 100%;
+  width: 120px;
+
+  border-radius: 8px;
+  background-color: grey;
+}
+
+.content {
+
+}
+
+.buttons {
+
+}

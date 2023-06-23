@@ -1,0 +1,12 @@
+﻿.counter {
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 68px;
+}
+
+.num {
+  font-size: 20px;
+  line-height: 20px;
+  /* margin: 0 6px; */
+}

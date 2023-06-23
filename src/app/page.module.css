@@ -1,0 +1,15 @@
+
+.main-page-wrapper {
+  height: 100%;
+  display: flex;
+}
+
+.side-panel-container {
+  width: calc(var(--sidepanel-width) - 32px);
+}
+
+.main-page {
+  padding-top: 24px;
+  width: 100%;
+  width: calc(100% - var(--sidepanel-width) + 32px);
+}

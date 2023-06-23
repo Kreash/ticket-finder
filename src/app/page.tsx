@@ -1,25 +1,18 @@
-import Image from 'next/image';
+import { SidePanel } from './components/side-panel/side-panel';
+import { TicketCard } from './components/ticket-card/ticket-card';
 import styles from './page.module.css';
 
 export default function Home() {
-  const test = 'hello world';
-
   return (
     <>
-      <header className={styles.header}></header>
-      <main className={styles.main}>{test}</main>
-      <footer className={styles.header}></footer>
+      <div className={styles['main-page-wrapper']}>
+        <div className={styles['side-panel-container']}>
+          <SidePanel />
+        </div>
+        <div className={styles['main-page']}>
+          <TicketCard isRemovable={true}></TicketCard>
+        </div>
+      </div>
     </>
   );
 }
-
-// <div className={styles.center}>
-// <Image
-//   className={styles.logo}
-//   src="/next.svg"
-//   alt="Next.js Logo"
-//   width={180}
-//   height={37}
-//   priority
-// />
-// </div>

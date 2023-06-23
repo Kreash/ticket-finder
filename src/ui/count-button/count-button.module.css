@@ -1,0 +1,25 @@
+﻿.button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  border-radius: 4px;
+  background: var(--orange, #F50);
+  position: relative;
+}
+
+.button::before,
+.button::after {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 1px;
+  background-color: white;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+}
+
+.button.plus::after {
+  transform: translate(-50%, -50%)rotate(90deg);
+}
