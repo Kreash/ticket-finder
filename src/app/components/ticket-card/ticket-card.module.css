@@ -4,6 +4,11 @@
 
   padding: 24px;
   display: flex;
+  justify-content: space-between;
+}
+
+.content-wrapper {
+  display: flex;
 }
 
 .image-wrapper {
@@ -15,9 +20,23 @@
 }
 
 .content {
-
+  margin: 0 24px;
 }
 
 .buttons {
+  display: flex;
+}
 
+.remove {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url('/close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  border: none;
+
+  margin-left: 24px;
 }

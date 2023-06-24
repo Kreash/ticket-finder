@@ -33,17 +33,17 @@ export function TicketCard({ isRemovable }: TicketCardProps) {
 
   return (
     <div className={styles.ticket + ' card-container'}>
-      <div className={styles['image-wrapper']}>{/* <Image src="/basket.svg" alt="Basket icon" height={32} width={32}/> */}</div>
-      <div className={styles.content}>
-        <h5 className={styles.title}>Название</h5>
-        <p className={styles.description}>Описание</p>
-        {/* <CountButton isPlus={true}></CountButton> */}
+      <div className={styles['content-wrapper']}>
+        <div className={styles['image-wrapper']}>{/* <Image src="/basket.svg" alt="Basket icon" height={32} width={32}/> */}</div>
+        <div className={styles.content}>
+          <h5 className={styles.title}>Название</h5>
+          <p className={styles.description}>Описание</p>
+        </div>
       </div>
 
       <div className={styles.buttons}>
         <Counter editValue={countEditHundler} value={0}></Counter>
-
-        {isRemovable && <button onClick={() => removeHandler('123')}>Удалить</button>}
+        {isRemovable && <button className={styles.remove} onClick={() => removeHandler('123')}></button>}
       </div>
     </div>
   );

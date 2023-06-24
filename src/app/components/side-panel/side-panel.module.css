@@ -14,6 +14,8 @@
   height: 100%;
   width: 100%;
   z-index: 100;
+
+  padding: 24px;
   /* transform: translateX(-100%); */
   /* transition: transform 0.3s ease-in-out; */
 }
@@ -22,6 +24,10 @@
   color: var(--text-primary, #1B1F23);
   font-size: 16px;
   font-weight: 600;
+
+  margin-bottom: 20px;
 }
 
-.filters {}
+.filters * + * {
+  margin-top: 20px;
+}

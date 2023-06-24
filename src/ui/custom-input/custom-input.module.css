@@ -1,0 +1,27 @@
+﻿.label {
+  color: var(--text-primary, #1B1F23);
+  width: 100%;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+
+.input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 8px;
+  padding: 10px 16px;
+  margin-top: 4px;
+
+  border-radius: 8px;
+  border: 1px solid var(--border-default);
+  background: var(--background-primary);
+}
+
+.input:focus-within,
+.input:focus-visible {
+  border-color: var(--orange, #F50);
+  outline: none;
+}
