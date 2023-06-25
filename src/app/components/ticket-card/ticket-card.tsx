@@ -10,6 +10,7 @@ import { RootStore } from '@/store/store';
 import { basketSlice } from '@/store/features/basket';
 import { Film } from '@/shared/models/film.model';
 import { genreMapper } from '@/utils/genre-mapper';
+import Link from 'next/link';
 
 export interface TicketCardProps {
   film: Film;
@@ -35,7 +36,9 @@ export function TicketCard({ film, isRemovable }: TicketCardProps) {
           <Image src={film.posterUrl} alt="Basket icon" height={120} width={100} />
         </div>
         <div className={styles.content}>
-          <h5 className={styles.title}>{film.title}</h5>
+          <h5 className={styles.title}>
+            <Link href={`/film/${film.id}`}>{film.title}</Link>
+          </h5>
           <p className={styles.genre}>{genreMapper(film.genre)}</p>
         </div>
       </div>

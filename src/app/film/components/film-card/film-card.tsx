@@ -7,7 +7,6 @@ import { Counter } from '@/shared/components/counter/counter';
 import { useDispatch } from 'react-redux';
 import { basketSlice } from '@/store/features/basket';
 import { genreMapper } from '@/utils/genre-mapper';
-import Link from 'next/link';
 
 export interface FilmCardProps {
   film: Film;
@@ -16,7 +15,7 @@ export interface FilmCardProps {
 export function FilmCard({ film }: FilmCardProps) {
   const dispatch = useDispatch();
   const countEditHundler = (count: number) => {
-    dispatch(basketSlice.actions.setItem({ id: '123', count }));
+    dispatch(basketSlice.actions.setItem({ id: film.id, count }));
   };
 
   return (
@@ -24,7 +23,7 @@ export function FilmCard({ film }: FilmCardProps) {
       <div className={styles['film-wrapper'] + ' card-container'}>
         <Image className={styles.image} src={film.posterUrl} alt={film.title} height={500} width={400} />
         <div className={styles.content}>
-          <h4 className={styles.title}><Link href={'/'}>{film.title}</Link> </h4>
+          <h4 className={styles.title}>{film.title}</h4>
 
           <p className={styles['short-description']}>
             <b>Жанр: </b>
