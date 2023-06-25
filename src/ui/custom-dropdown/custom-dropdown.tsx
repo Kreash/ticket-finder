@@ -7,22 +7,26 @@ import Image from 'next/image';
 export interface CustomDropdownProps {
   title: string;
   options: DropDownItem[];
-  valueChanged?: (id: number) => void;
+  valueChanged?: (id: string) => void;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 export interface DropDownItem {
-  id: number;
+  id: string;
   title: string;
 }
 
-export function CustomDropdown({ title, options, valueChanged, placeholder }: CustomDropdownProps) {
+export function CustomDropdown({ title, options, valueChanged, placeholder, disabled }: CustomDropdownProps) {
   const inputRef = useRef(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showValue, setShowValue] = useState<string>('');
 
   const isOpenHandler = () => {
+    if (disabled) {
+      return;
+    }
     setIsDropdownOpen((isOpen) => !isOpen);
   };
 

@@ -9,7 +9,7 @@ import { selectMovieQuantity } from '@/store/features/basket/selector';
 import { RootStore } from '@/store/store';
 import { basketSlice } from '@/store/features/basket';
 import { Film } from '@/shared/models/film.model';
-import { cinemasMapper } from '@/utils/cinemas-mapper';
+import { genreMapper } from '@/utils/genre-mapper';
 
 export interface TicketCardProps {
   film: Film;
@@ -36,7 +36,7 @@ export function TicketCard({ film, isRemovable }: TicketCardProps) {
         </div>
         <div className={styles.content}>
           <h5 className={styles.title}>{film.title}</h5>
-          <p className={styles.genre}>{cinemasMapper(film.genre)}</p>
+          <p className={styles.genre}>{genreMapper(film.genre)}</p>
         </div>
       </div>
 
