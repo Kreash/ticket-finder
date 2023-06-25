@@ -1,5 +1,7 @@
-﻿import styles from './counter.module.css';
-import { CountButton } from '../../../ui/count-button/count-button';
+﻿'use client';
+
+import styles from './counter.module.css';
+import { CountButton } from '@/ui/count-button/count-button';
 import { useState } from 'react';
 
 export interface CounterProps {

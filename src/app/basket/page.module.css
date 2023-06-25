@@ -1,0 +1,16 @@
+﻿.basket-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: calc(100vh - 84px - 86px - 48px);
+}
+
+.total-wrapper {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.ticket+.ticket {
+  margin-top: 16px;
+}

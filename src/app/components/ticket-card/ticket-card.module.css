@@ -1,5 +1,5 @@
 ﻿.ticket {
-  height: 168px;
+  /* height: 168px; */
   width: 100%;
 
   padding: 24px;
@@ -12,8 +12,10 @@
 }
 
 .image-wrapper {
-  height: 100%;
-  width: 120px;
+  height: 120px;
+  width: 100px;
+  min-width: 100px;
+  overflow: hidden;
 
   border-radius: 8px;
   background-color: grey;
@@ -21,6 +23,19 @@
 
 .content {
   margin: 0 24px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.genre {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 20px;
 }
 
 .buttons {

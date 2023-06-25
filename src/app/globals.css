@@ -1,5 +1,7 @@
 :root {
   --gray-1: #333;
+  --gray-3: #828282;
+  --gray-5: #E0E0E0;
 
   --background-gray: #f2f2f2;
 
@@ -16,6 +18,8 @@
 
   --border-default: #E1E3E6;
   --background-primary: #FFF;
+
+  --border-radius: 8px;
 }
 
 
@@ -42,7 +46,7 @@ a {
 }
 
 .card-container {
-  border-radius: 8px;
+  border-radius: var(--border-radius, 8px);
   background: #FFF;
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
 }

@@ -1,6 +1,6 @@
 ﻿.footer {
   height: 86px;
-  width: 100vw;
+  /* width: 100vw; */
   background: var(--gray-1);
 
   display: flex;

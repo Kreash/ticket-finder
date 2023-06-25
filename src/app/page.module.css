@@ -9,7 +9,12 @@
 }
 
 .main-page {
-  padding-top: 24px;
+  /* padding-top: 24px; */
+  padding: 0 24px;
   width: 100%;
   width: calc(100% - var(--sidepanel-width) + 32px);
+}
+
+.ticket + .ticket {
+  margin-top: 16px;
 }

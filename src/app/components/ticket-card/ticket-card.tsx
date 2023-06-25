@@ -1,43 +1,42 @@
 ﻿'use client';
 
 import styles from './ticket-card.module.css';
-// import Image from 'next/image';
-// import { CountButton } from '../../../ui/count-button/count-button';
-import { Counter } from '../counter/counter';
+import Image from 'next/image';
+import { Counter } from '@/shared/components/counter/counter';
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import { selectMovieQuantity } from '@/store/features/basket/selector';
 import { RootStore } from '@/store/store';
 import { basketSlice } from '@/store/features/basket';
+import { Film } from '@/shared/models/film.model';
+import { cinemasMapper } from '@/utils/cinemas-mapper';
 
 export interface TicketCardProps {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
+  film: Film;
   isRemovable?: boolean;
 }
 
 export interface TicketCardProps {}
 
-export function TicketCard({ isRemovable }: TicketCardProps) {
+export function TicketCard({ film, isRemovable }: TicketCardProps) {
   // const moviesQuantityInBasket = useSelector((state: RootStore) => selectMovieQuantity(state, '123'));
 
   const dispatch = useDispatch();
   const countEditHundler = (count: number) => {
-    dispatch(basketSlice.actions.setItem({ id: '123', count }));
+    dispatch(basketSlice.actions.setItem({ id: film.id, count }));
   };
   const removeHandler = (id: string) => {
     dispatch(basketSlice.actions.removeItem(id));
   };
-
   return (
     <div className={styles.ticket + ' card-container'}>
       <div className={styles['content-wrapper']}>
-        <div className={styles['image-wrapper']}>{/* <Image src="/basket.svg" alt="Basket icon" height={32} width={32}/> */}</div>
+        <div className={styles['image-wrapper']}>
+          <Image src={film.posterUrl} alt="Basket icon" height={120} width={100} />
+        </div>
         <div className={styles.content}>
-          <h5 className={styles.title}>Название</h5>
-          <p className={styles.description}>Описание</p>
+          <h5 className={styles.title}>{film.title}</h5>
+          <p className={styles.genre}>{cinemasMapper(film.genre)}</p>
         </div>
       </div>
 

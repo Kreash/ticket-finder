@@ -1,5 +1,6 @@
 ﻿.main {
   min-height: calc(100vh - 84px - 86px);
   background: var(--background-gray);
-  padding: 0 32px;
+  color: var(--text-primary, #1B1F23);
+  padding: 24px 32px;
 }

@@ -2,13 +2,14 @@
   position: sticky;
   top: 0;
   height: var(--header-height);
-  width: 100vw;
+  /* width: 100vw; */
   background: var(--gray-1);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 32px;
+  z-index: 100;
 }
 
 .logo {

@@ -1,0 +1,43 @@
+﻿.film-wrapper {
+  display: flex;
+  gap: 32px;
+
+  padding: 24px;
+  position: relative;
+}
+
+.image {
+  border-radius: 8px;
+  min-width: 400px;
+}
+
+.title {
+  color: var(--text-primary, #1B1F23);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+
+  margin-bottom: 24px;
+}
+
+.short-description {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.short-description+.short-description {
+  margin-top: 16px;
+}
+
+.description-title {
+  font-size: 20px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.counter-container {
+  position: absolute;
+
+  top: 24px;
+  right: 24px;
+}
