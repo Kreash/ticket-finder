@@ -25,7 +25,7 @@ export function useMoviesByFilters({ initialMovies, initialIsFetching }: useMovi
 
   let filters = useSelector(selectFiltersModule);
 
-  const { data, isFetching, isError, error } = movieApi.useGetMoviesQuery(filters.cinema);
+  const { data, isFetching, isError } = movieApi.useGetMoviesQuery(filters.cinema);
 
   useEffect(() => {
     let movies = data;

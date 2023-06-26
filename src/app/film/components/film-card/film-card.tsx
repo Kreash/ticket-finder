@@ -21,7 +21,7 @@ export function FilmCard({ film }: FilmCardProps) {
   return (
     <>
       <div className={styles['film-wrapper'] + ' card-container'}>
-        <Image className={styles.image} src={film.posterUrl} alt={film.title} height={500} width={400} />
+        <Image className={styles.image} src={film.posterUrl} alt={film.title} height={500} width={400} loading="lazy" />
         <div className={styles.content}>
           <h4 className={styles.title}>{film.title}</h4>
 

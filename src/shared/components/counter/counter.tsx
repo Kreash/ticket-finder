@@ -2,7 +2,7 @@
 
 import styles from './counter.module.css';
 import { CountButton } from '@/ui/count-button/count-button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface CounterProps {
   editValue: (count: number) => void;
@@ -15,15 +15,22 @@ export function Counter({ editValue, value }: CounterProps) {
   const minusHandler = () => {
     if (count > 0) {
       setCount(count - 1);
-      editValue(count);
+      editValue(count - 1);
     }
   };
   const plusHandler = () => {
     if (count <= 30) {
       setCount(count + 1);
-      editValue(count);
+      editValue(count + 1);
     }
   };
+
+  useEffect(() => {
+    console.log('value', value, 'count', count);
+    if (value !== undefined && value !== count) {
+      setCount(value ?? 0);
+    }
+  }, [value, count]);
 
   return (
     <div className={styles.counter}>

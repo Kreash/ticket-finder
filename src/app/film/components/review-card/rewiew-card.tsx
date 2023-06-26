@@ -11,7 +11,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
     <>
       <div className={styles['review-wrapper'] + ' card-container'}>
         <div className={styles.image}>
-          <Image src="/photo.svg" alt="review.name" height={32} width={32}></Image>
+          <Image src="/photo.svg" alt="review.name" height={32} width={32} loading='lazy' />
         </div>
         <div className={styles.content}>
           <div className={styles['name-wrapper']}>

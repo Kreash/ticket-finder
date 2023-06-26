@@ -1,0 +1,65 @@
+﻿.modal {
+  padding: 24px;
+}
+
+
+.title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.title {
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 24px;
+}
+
+.remove {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: url('/close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  border: none;
+
+  margin-left: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  background: var(--background-primary, #FFF);
+}
+
+.agree {
+  color: var(--background-primary, #FFF);
+  background: var(--orange, #F50);
+}
+
+.close {
+  color: var(--orange, #F50);
+  border: 1px solid var(--orange, #F50);
+}
