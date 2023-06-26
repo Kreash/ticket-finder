@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 export default function Film({ params }: { params: { id: string } }) {
   const [movieWithReviws, setMovieWithReviws] = useState<MovieWithReviews>();
 
-  const { data, isFetching } = movieApi.useGetMovieAndRewiewsQuery(params.id);
+  const { data, isFetching, isError } = movieApi.useGetMovieAndRewiewsQuery(params.id);
 
   useEffect(() => {
     if (!data) {
@@ -21,8 +21,12 @@ export default function Film({ params }: { params: { id: string } }) {
   return (
     <>
       <div className={styles['film-wrapper']}>
-        {isFetching ? (
-          <div>Загрузка...</div>
+        {isFetching || isError ? (
+          isError ? (
+            <div>Ошибка: запрос на сервер завершился ошибкой</div>
+          ) : (
+            <div>Загрузка...</div>
+          )
         ) : (
           <>
             {movieWithReviws && <FilmCard film={movieWithReviws.movie}></FilmCard>}

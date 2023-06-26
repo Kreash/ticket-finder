@@ -14,6 +14,7 @@ export interface useMoviesByFiltersProps {
 export interface useMoviesByFiltersReturn {
   movies: Film[] | undefined;
   isFetching: boolean;
+  isError?: boolean;
 }
 
 export function useMoviesByFilters({ initialMovies, initialIsFetching }: useMoviesByFiltersProps) {
@@ -24,7 +25,7 @@ export function useMoviesByFilters({ initialMovies, initialIsFetching }: useMovi
 
   let filters = useSelector(selectFiltersModule);
 
-  const { data, isFetching } = movieApi.useGetMoviesQuery(filters.cinema);
+  const { data, isFetching, isError, error } = movieApi.useGetMoviesQuery(filters.cinema);
 
   useEffect(() => {
     let movies = data;
@@ -40,8 +41,9 @@ export function useMoviesByFilters({ initialMovies, initialIsFetching }: useMovi
     setReturnValue({
       movies: movies,
       isFetching: isFetching,
+      isError,
     });
-  }, [data, isFetching, filters, setReturnValue]);
+  }, [data, isFetching, isError, filters, setReturnValue]);
 
   return returnValue;
 }

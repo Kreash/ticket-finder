@@ -15,6 +15,10 @@ export const movieApi = createApi({
       async queryFn(movieId, api, extraOptions, baseQuery) {
         const result = await Promise.all([baseQuery(`movie?movieId=${movieId}`), baseQuery(`reviews?movieId=${movieId}`)]);
 
+        if (result.some((res) => res.error)) {
+          throw new Error('Error');
+        }
+
         const data = {
           movie: result[0].data as Film,
           reviews: result[1].data as Review[],

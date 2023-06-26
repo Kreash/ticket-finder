@@ -22,12 +22,16 @@ export default function Home() {
 }
 
 function TicketCards() {
-  const { movies, isFetching } = useMoviesByFilters({});
+  const { movies, isFetching, isError } = useMoviesByFilters({});
 
   return (
     <>
-      {isFetching ? (
-        <div>Загрузка...</div>
+      {isFetching || isError ? (
+        isError ? (
+          <div>Ошибка: запрос на сервер завершился ошибкой</div>
+        ) : (
+          <div>Загрузка...</div>
+        )
       ) : (
         movies &&
         movies.map((film) => {

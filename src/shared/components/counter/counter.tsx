@@ -13,12 +13,16 @@ export function Counter({ editValue, value }: CounterProps) {
   const [count, setCount] = useState(value ?? 0);
 
   const minusHandler = () => {
-    count > 0 && setCount(count - 1);
-    editValue(count);
+    if (count > 0) {
+      setCount(count - 1);
+      editValue(count);
+    }
   };
   const plusHandler = () => {
-    setCount(count + 1);
-    editValue(count);
+    if (count <= 30) {
+      setCount(count + 1);
+      editValue(count);
+    }
   };
 
   return (
