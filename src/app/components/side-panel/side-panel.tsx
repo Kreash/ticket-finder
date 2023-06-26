@@ -36,10 +36,6 @@ const genres: DropDownItem[] = [
 export function SidePanel({}) {
   const [sinemas, setSinemas] = useState<DropDownItem[]>([]);
 
-  const inputHandler = (value: string) => {
-    console.log('inputHandler', value);
-  };
-
   const { data, isLoading, error } = movieApi.useGetCinemasQuery(undefined);
 
   useEffect(() => {
@@ -67,6 +63,12 @@ export function SidePanel({}) {
   }, [data]);
 
   const dispatch = useDispatch();
+
+  const inputHandler = (value: string) => {
+    dispatch(filtersSlice.actions.setName(value));
+    console.log('inputHandler', value);
+  };
+
   const genreSelectHandler = (value: string) => {
     dispatch(filtersSlice.actions.setGenre(value));
   };

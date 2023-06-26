@@ -27,9 +27,18 @@ export function useMoviesByFilters({ initialMovies, initialIsFetching }: useMovi
   const { data, isFetching } = movieApi.useGetMoviesQuery(filters.cinema);
 
   useEffect(() => {
-    console.log("useMoviesByFilters")
+    let movies = data;
+    if (movies) {
+      if (filters.genre) {
+        movies = filters.genre !== EnGenres.notSelected ? movies.filter((movie) => movie.genre === filters.genre) : movies;
+      }
+      if (filters.name) {
+        movies = movies.filter((movie) => filters.name && movie.title.includes(filters.name));
+      }
+    }
+
     setReturnValue({
-      movies: data && filters.genre ? (filters.genre !== EnGenres.notSelected ? data?.filter((movie) => movie.genre === filters.genre) : data) : data,
+      movies: movies,
       isFetching: isFetching,
     });
   }, [data, isFetching, filters, setReturnValue]);

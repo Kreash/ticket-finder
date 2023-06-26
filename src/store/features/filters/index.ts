@@ -2,6 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface FiltersState {
+  name?: string;
   genre?: EnGenres;
   cinema?: string;
 }
@@ -17,6 +18,9 @@ export const filtersSlice = createSlice({
   name: 'filters',
   initialState: initialState,
   reducers: {
+    setName: (state, { payload }: PayloadAction<string>) => {
+      state.name = payload;
+    },
     setGenre: (state, { payload }: PayloadAction<string>) => {
       if (isGenre(payload)) {
         state.genre = payload;
