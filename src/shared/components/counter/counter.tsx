@@ -19,14 +19,13 @@ export function Counter({ editValue, value }: CounterProps) {
     }
   };
   const plusHandler = () => {
-    if (count <= 30) {
+    if (count < 30) {
       setCount(count + 1);
       editValue(count + 1);
     }
   };
 
   useEffect(() => {
-    console.log('value', value, 'count', count);
     if (value !== undefined && value !== count) {
       setCount(value ?? 0);
     }
@@ -34,9 +33,9 @@ export function Counter({ editValue, value }: CounterProps) {
 
   return (
     <div className={styles.counter}>
-      <CountButton clickHandler={minusHandler} />
+      <CountButton disabled={count === 0} clickHandler={minusHandler} />
       <div className={styles.num}>{count}</div>
-      <CountButton clickHandler={plusHandler} isPlus={true} />
+      <CountButton disabled={count === 30} clickHandler={plusHandler} isPlus={true} />
     </div>
   );
 }

@@ -13,9 +13,8 @@ export interface TicketModalProps {
 }
 
 export function TicketModal({ isOpen, id, completeHandler, closeHandler }: TicketModalProps) {
-  // const [isOpen, setIsOpen] = useState(false);
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} outsideClickHandler={closeHandler}>
       <div className={styles.modal}>
         <div className={styles['title-wrapper']}>
           <h3 className={styles.title}>Удаление билета</h3>

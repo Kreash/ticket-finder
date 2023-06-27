@@ -1,14 +1,24 @@
-﻿import { useEffect, useState } from 'react';
+﻿import { useEffect, useRef, useState } from 'react';
 import styles from './modal.module.css';
 import { createPortal } from 'react-dom';
+import { useOutsideClick } from '@/hooks/outside-click/outside-click';
 
 export interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
+  outsideClickHandler?: () => void;
 }
 
-export function Modal({ children, isOpen }: ModalProps) {
+export function Modal({ children, isOpen, outsideClickHandler }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const modalRef = useRef(null);
+
+  const handleCloseModal = () => {
+    outsideClickHandler?.();
+  };
+
+  useOutsideClick(modalRef, handleCloseModal);
 
   useEffect(() => {
     setIsModalOpen(isOpen);
@@ -19,7 +29,9 @@ export function Modal({ children, isOpen }: ModalProps) {
       {isModalOpen &&
         createPortal(
           <div className={styles.backdrop}>
-            <div className={styles.modal + ' card-container'}>{children}</div>
+            <div ref={modalRef} className={styles.modal + ' card-container'}>
+              {children}
+            </div>
           </div>,
           document.body,
         )}

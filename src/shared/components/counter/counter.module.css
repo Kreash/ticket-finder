@@ -2,11 +2,12 @@
   height: 20px;
   display: flex;
   justify-content: space-between;
-  width: 68px;
+  width: max-content;
 }
 
 .num {
   font-size: 20px;
   line-height: 20px;
-  /* margin: 0 6px; */
+  font-weight: 600;
+  margin: 0 8px;
 }

@@ -4,9 +4,11 @@ import Image from 'next/image';
 import { Film } from '@/shared/models/film.model';
 import styles from './film-card.module.css';
 import { Counter } from '@/shared/components/counter/counter';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { basketSlice } from '@/store/features/basket';
 import { genreMapper } from '@/utils/genre-mapper';
+import { RootStore } from '@/store/store';
+import { selectMovieQuantity } from '@/store/features/basket/selector';
 
 export interface FilmCardProps {
   film: Film;
@@ -18,6 +20,7 @@ export function FilmCard({ film }: FilmCardProps) {
     dispatch(basketSlice.actions.setItem({ id: film.id, count }));
   };
 
+  let movieTickets = useSelector((state: RootStore) => selectMovieQuantity(state, film.id));
   return (
     <>
       <div className={styles['film-wrapper'] + ' card-container'}>
@@ -46,7 +49,7 @@ export function FilmCard({ film }: FilmCardProps) {
           <p className={styles.description}>{film.description}</p>
         </div>
         <div className={styles['counter-container']}>
-          <Counter editValue={countEditHundler} value={0} />
+          <Counter editValue={countEditHundler} value={movieTickets} />
         </div>
       </div>
     </>

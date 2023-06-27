@@ -5,6 +5,11 @@
   border-radius: 4px;
   background: var(--orange, #F50);
   position: relative;
+  cursor: pointer;
+}
+
+.button.disabled {
+  background: var(--orange-disabled, #FFA375);
 }
 
 .button::before,

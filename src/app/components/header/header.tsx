@@ -1,6 +1,7 @@
 ﻿import Link from 'next/link';
 import styles from './header.module.css';
 import Image from 'next/image';
+import { BasketQuantityIndicator } from './components/basket-quantity-indicator/basket-quantity-indicator';
 
 export function Header() {
   return (
@@ -9,6 +10,7 @@ export function Header() {
         Билетопоиск
       </Link>
       <div className={styles.basket}>
+        <BasketQuantityIndicator />
         <Link href="/basket">
           <Image src="/basket.svg" alt="Basket icon" height={32} width={32}></Image>
         </Link>

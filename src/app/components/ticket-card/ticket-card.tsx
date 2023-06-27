@@ -50,7 +50,6 @@ function CounterWrapper({ film, isRemovable }: CounterWrapperProps) {
   let movieTickets = useSelector((state: RootStore) => selectMovieQuantity(state, film.id));
   const dispatch = useDispatch();
   const countEditHundler = (count: number) => {
-    console.log('countEditHundler:', count);
     if (isRemovable && count === 0) {
       removeHandler(film.id);
     } else {

@@ -66,7 +66,6 @@ export function SidePanel({}) {
 
   const inputHandler = (value: string) => {
     dispatch(filtersSlice.actions.setName(value));
-    console.log('inputHandler', value);
   };
 
   const genreSelectHandler = (value: string) => {

@@ -1,6 +1,5 @@
 ﻿.footer {
   height: 86px;
-  /* width: 100vw; */
   background: var(--gray-1);
 
   display: flex;
@@ -11,7 +10,6 @@
 }
 
 .footer a {
-  /* cursor: pointer; */
   color: #FFF;
   font-size: 20px;
 }

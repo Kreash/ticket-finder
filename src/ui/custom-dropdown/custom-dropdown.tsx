@@ -3,6 +3,8 @@ import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'reac
 import styles from './custom-dropdown.module.css';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
+import { useOutsideClick } from '@/hooks/outside-click/outside-click';
+import useScroll from '@/hooks/scroll/scroll';
 
 export interface CustomDropdownProps {
   title: string;
@@ -51,7 +53,11 @@ export function CustomDropdown({ title, options, valueChanged, placeholder, disa
           width={20}
         ></Image>
       </label>
-      {isDropdownOpen && createPortal(<DropDown items={options} position={position} clickHandler={optionSelectHundler} />, document.body)}
+      {isDropdownOpen &&
+        createPortal(
+          <DropDown items={options} position={position} clickHandler={optionSelectHundler} closeHandler={() => setIsDropdownOpen(false)} />,
+          document.body,
+        )}
     </div>
   );
 }
@@ -60,11 +66,23 @@ interface DropDownProps {
   items: DropDownItem[];
   position: { top: number; left: number; width: number };
   clickHandler: (option: DropDownItem) => void;
+  closeHandler?: () => void;
 }
 
-function DropDown({ items, position, clickHandler }: DropDownProps) {
+function DropDown({ items, position, clickHandler, closeHandler }: DropDownProps) {
+  const modalRef = useRef(null);
+
+  const handleCloseModal = () => {
+    closeHandler?.();
+  };
+
+  useOutsideClick(modalRef, handleCloseModal);
+
+  const bodyRef = useRef(document);
+  useScroll(bodyRef, handleCloseModal);
+
   return (
-    <div style={{ top: position.top, left: position.left, width: position.width }} className={styles['dropdown-container']}>
+    <div ref={modalRef} style={{ top: position.top, left: position.left, width: position.width }} className={styles['dropdown-container']}>
       {items.map((item) => (
         <div onClick={() => clickHandler(item)} tabIndex={0} className={styles['dropdown-item']} key={item.id}>
           {item.title}
@@ -88,7 +106,8 @@ function useDropDownPosition({ ref, isOpen }: DropDownPositionProps) {
       return;
     }
 
-    setPosition({ top: boundingRect?.bottom + 4 ?? 0, left: boundingRect?.left ?? 0, width: ref.current?.offsetWidth ?? 0 });
+    const bodyTop = document.body.getBoundingClientRect().top;
+    setPosition({ top: boundingRect?.bottom + 4 - bodyTop ?? 0, left: boundingRect?.left ?? 0, width: ref.current?.offsetWidth ?? 0 });
   }, [ref, isOpen]);
 
   return position;
