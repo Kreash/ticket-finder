@@ -34,7 +34,7 @@ export function useMoviesByFilters({ initialMovies, initialIsFetching }: useMovi
         movies = filters.genre !== EnGenres.notSelected ? movies.filter((movie) => movie.genre === filters.genre) : movies;
       }
       if (filters.name) {
-        movies = movies.filter((movie) => filters.name && movie.title.includes(filters.name));
+        movies = movies.filter((movie) => filters.name && movie.title.toLowerCase().includes(filters.name.toLowerCase()));
       }
     }
 
